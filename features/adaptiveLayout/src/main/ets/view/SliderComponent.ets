@@ -1,0 +1,21 @@
+import { CommonConstants } from '../constants/CommonConstants';
+
+@Component
+export struct SliderComponent {
+  @LocalStorageLink('containerWidth') containerWidth: number = 55;
+
+  build() {
+    Slider({
+      value: this.containerWidth,
+      min: CommonConstants.SLIDER_MIN,
+      max: CommonConstants.SLIDER_MAX
+    })
+      .trackColor($r('app.color.slider_color_track'))
+      .selectedColor($r('app.color.slider_color_selected'))
+      .width($r('app.float.slider_width'))
+      .onChange((value: number) => {
+        this.containerWidth = value;
+      })
+  }
+}
+
